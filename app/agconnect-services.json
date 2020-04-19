@@ -1,0 +1,12 @@
+{
+	"client":{
+		"cp_id":"70971000000036118",
+		"product_id":"9105385871709249176",
+		"client_id":"342933056333546624",
+		"client_secret":"71EE57C62F177135DFD446E9EC93C060302C02119ED58C334E81542F90EDCFE6",
+		"app_id":"102065229",
+		"package_name":"com.sizwe.PinYourAddressOnTheMap",
+		"api_key":"CV7BndPX5tuyjCq+sl7dHrlNxw9xnEPTv9q6s84nbr4c8Fy+Ka9SSayA2bkSTqnwRwvcXl2TJV53iRK9DH88/dCoh3F9"
+	},
+	"configuration_version":"1.0"
+}
