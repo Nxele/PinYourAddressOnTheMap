@@ -18,12 +18,6 @@ public class myMapWorkLoad {
     private final String url ="https://siteapi.cloud.huawei.com/mapApi/v1/siteService/reverseGeocode";
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    //FUNCTION THAT RECEIVE AN ADDRESS AS A STRING THEN AND ADDS NEXT LINE WHERE THE IS COMMAS AND RETURN THE NEW FORMATTED STRING
-    public String wrapString(String address){
-        String dataX = address.replaceAll("[,]", "\n");
-        return dataX;
-    }
-
     //getReverseGeocode METHOD RECEIVES LATITUDE AND LONGITUDE AS STRINGS AND MAKE AN HTTP POST REQUEST TO HMS reverseGeocode SERVICES
     //THE METHOD RETURNS AN ADDRESS AND A STRING
     public String getReverseGeocode(String latitude,String longitude){
@@ -64,5 +58,11 @@ public class myMapWorkLoad {
 
         }
         return addressDescription; //RETURN THE addressDescription
+    }
+
+    //FUNCTION THAT RECEIVE AN ADDRESS AS A STRING THEN AND ADDS NEXT LINE WHERE THE IS COMMAS AND RETURN THE NEW FORMATTED STRING
+    public String wrapString(String address){
+        String dataX = address.replaceAll("[,]", "\n");
+        return dataX;
     }
 }
