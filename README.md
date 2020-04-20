@@ -75,6 +75,30 @@ dependencies {
 ```
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/build.gradle
 
+### 4. Add a MapFragment in the layout file of an activity, and set the map attributes using the XML and also add the textView for popup when you select a marker on the map
+```
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/mapfragment_mapfragmentdemo"
+        class="com.huawei.hms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:cameraTargetLat="-26.064738"
+        map:cameraTargetLng="28.0902398"
+        map:cameraZoom="4"/>
+```
+link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/activity_main.xml
+
+### 5. add access permission on the AndroidManifest.xml 
+```
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+```
+please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/AndroidManifest.xml
+
 
 ### please look at these examples also from Huawei
 
@@ -94,7 +118,6 @@ when you are done with the above steps it's should be very easy to create this a
 
 
 1. create your app on android studio select empty activity from the provided templates
-
 reference: https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#2
 
 2.
