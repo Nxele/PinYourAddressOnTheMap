@@ -9,4 +9,8 @@ Geocoding value) Display a pin on the map. User can move and click on the map, t
 will move to the point as user clicks. Popup the address description when
 user pins a point on the map.
 
+### First you need to create an account on https://developer.huawei.com so you can use Huawei mobile services 
+
+Step one register here https://developer.huawei.com
+
 
