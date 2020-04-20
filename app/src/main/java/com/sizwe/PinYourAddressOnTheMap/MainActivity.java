@@ -10,6 +10,9 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,14 +44,8 @@ import com.huawei.hms.maps.model.LatLng;
 import com.huawei.hms.maps.model.Marker;
 import com.huawei.hms.maps.model.MarkerOptions;
 
-import java.io.IOException;
 import java.util.List;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
     //LOG TAG AND ACCESS DECLARATION
@@ -65,12 +62,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     //HUAWEI TECHNOLOGIES SOUTH AFRICA FINAL DEFAULT VALUES
     private final LatLng huawei_SA_latLng = new LatLng(-26.064738,28.0902398);
-    private final String huawei_SA_address = "Woodmead Ext 20, Sandton, City of Johannesburg, Gauteng, South Africa";
-
-    //HUAWEI MOBILE SERVES API VALUES
-    private final String API_key = "CV7BndPX5tuyjCq+sl7dHrlNxw9xnEPTv9q6s84nbr4c8Fy+Ka9SSayA2bkSTqnwRwvcXl2TJV53iRK9DH88/dCoh3F9";
-    private final String url ="https://siteapi.cloud.huawei.com/mapApi/v1/siteService/reverseGeocode";
-    public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     //LOCATION SERVES DECLARATION
     LocationCallback mLocationCallback;
@@ -78,11 +69,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient fusedLocationProviderClient;
     private SettingsClient settingsClient;
 
+    //CREATE AN OBJECT FOR MY CLASS CALLED myMapWorkLoad
+    myMapWorkLoad mapworkloard = new myMapWorkLoad();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("pin your address");
+        setTitle("PIN YOUR ADDRESS");
 
         //PERMIT THE APP TO CREATE THREADS IN THE BACKGROUND
          StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -142,10 +136,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             userCurrentLocation = new LatLng(location.getLatitude(),location.getLongitude());
 
                             if(myLocationMarker==null){
-                                String userAddress = getReverseGeocode(""+location.getLatitude(),""+location.getLongitude());
                                 myLocationMarker = myMap.addMarker(new MarkerOptions().position(userCurrentLocation)
                                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.mylocation_star_icon))
-                                        .title(userAddress)
                                         .clusterable(true));
                                 //update map camera
                                 updateMapCamera(userCurrentLocation);
@@ -169,47 +161,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    //getReverseGeocode METHOD RECEIVES LATITUDE AND LONGITUDE AS STRINGS AND MAKE AN HTTP POST REQUEST TO HMS reverseGeocode SERVICES
-    //THE METHOD RETURNS AN ADDRESS AND A STRING
-    private String getReverseGeocode(String latitude,String longitude){
-        OkHttpClient client = new OkHttpClient();
-        String addressDescription = "";
-
-        //REQUEST BODY TEMPLATE
-        String requestJsonString = "{'location':"
-                    + "{'lng':'" + longitude + "',"
-                    + "'lat':'" + latitude + "'},"
-                    + "'language':'en'}";
-
-        try{
-            RequestBody body = RequestBody.create(requestJsonString,JSON);
-            Request newRequest = new Request.Builder()
-                    .url(url)  // HMS LINK FOR reverseGeocode
-                    .header("key",API_key) // ADD API KEY AS A HEADER
-                    .post(body)  // BODY WITH LATITUDE AND LONGITUDE
-                    .build();
-
-            //RECEIVE RESPONSE STORE IT AS A RESPONSE
-            Response response = client.newCall(newRequest).execute();
-
-            //CONVERT THE RESPONSE TO A STRING
-            String result = response.body().string();
-
-            //GET formatAddress FROM THE STRING USING SUBSTRING
-            int indexAddress = result.indexOf("formatAddress");
-            String word1 = result.substring(indexAddress+16);
-            int lastIndex = word1.indexOf("\"");
-            addressDescription = word1.substring(0,lastIndex);
-        }
-        catch (IOException e){ // CATCH ANY CRASHES FROM THE POST REQUEST
-            addressDescription = "address not found!";
-            Log.e(TAG,"Exceptoin on reverseGeocode request :"+e.getMessage().toString());
-
-        }
-        return addressDescription; //RETURN THE addressDescription
-    }
-
-    //This is the map fragment method all map interation
+    //THIS IS THE MAP fragment METHOD ALL THE MAP INTERACTION HAPPENS HERE
     @RequiresPermission(allOf = {ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE})
     @Override
     public void onMapReady(HuaweiMap map){
@@ -217,38 +169,81 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         myMap.setMyLocationEnabled(false);// Enable the my-location overlay.
         myMap.getUiSettings().setMyLocationButtonEnabled(true);// Enable the my-location icon.
 
+        // CREATE THE CustomInfoWindowAdapter FOR DISPLAY ADDRESS AS A POPUP
+        class CustomInfoWindowAdapter implements HuaweiMap.InfoWindowAdapter {
+            private final View mWindow;
+            CustomInfoWindowAdapter() {
+                mWindow = getLayoutInflater().inflate(R.layout.custom_info_wi, null);
+            }
+            @Override
+            public View getInfoWindow(Marker marker) {
+                TextView txtvSnippett;txtvSnippett = mWindow.findViewById(R.id.txtv_snippett);
+                txtvSnippett.setText(marker.getSnippet());
+                return mWindow;
+            }
+            @Override
+            public View getInfoContents(Marker marker) {
+                return null;
+            }
+        }
+        //SET THE COSTUME WINDOW
+        myMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
+
+        //CREATE MARKER OBJECT AND SET IT TO BE DRAGGABLE
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.draggable(true);
 
-        //set dealft marker on the map default locat HUAWEI TECHNOLOGIES IN GUATENG SA
+        // SET DEFAULT MARKER ON TECHNOLOGIES IN GUATENG SA
         pinMarker = myMap.addMarker(markerOptions.position(huawei_SA_latLng));
-        pinMarker.setTitle(huawei_SA_address);
+
+        // GET THE CURRENT ADDRESS OF THE MARKER WHEN IS IT IS CLICKED AND UPDATE THE POPUP
+        myMap.setOnMarkerClickListener(new HuaweiMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                    String addressDescption = (mapworkloard.getReverseGeocode("" + marker.getPosition().latitude, "" + marker.getPosition().longitude));
+                    marker.setSnippet(addressDescption);
+                return false;
+            }
+        });
 
         myMap.setOnMapClickListener(new HuaweiMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                String addressDescption = (getReverseGeocode(""+latLng.latitude,""+latLng.longitude));
-
-                //remove the current marker add the marker here on map click
-                pinMarker.remove();
-                markerOptions.title(addressDescption);
-                pinMarker = myMap.addMarker(markerOptions.position(latLng));
-                //pinMarker.setPosition(latLng);
-
+                //WHEN A USER CLICK ON THE MAP MOVE THE MARKER TO A NEW POSITION
+                pinMarker.setPosition(latLng);
                 //update map camera
                 updateMapCamera(latLng);
             }
+
+        });
+
+        //CENTER THE MARKER ON DRAG END AND GET THE NEW ADDRESS
+        myMap.setOnMarkerDragListener(new HuaweiMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+                Log.i(TAG, "onMarkerDragStart: ");
+            }
+            @Override
+            public void onMarkerDrag(Marker marker) {
+                Log.i(TAG, "onMarkerDrag: ");
+            }
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+                updateMapCamera(marker.getPosition());
+            }
         });
     }
-    //
+
+
+
+    //THIS FUNCTION MOVES THE CAMERA TO WHERE THE MARKER IS AND SET ZOOM TO 12
     private void updateMapCamera(LatLng latLng){
-        //This is to move the camera to where the marker is zoom is set to 10
         CameraPosition build = new CameraPosition.Builder().target(latLng).zoom(12).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(build);
         myMap.animateCamera(cameraUpdate);
     }
 
-    //requestion the user current location method it also do checks if the user location is enabled
+    // THIS FUNCTION LOCATE USER CURRENT LOCATION ALSO CHECK IF LOCATION ACCESS IS ENABLED ON THE DEVICE
     private void requestLocationUpdatesWithCallback() {
         try {
             LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder();
