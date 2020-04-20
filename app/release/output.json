@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.sizwe.pinyouraddressonthemap",
+  "applicationId": "com.sizwe.PinYourAddressOnTheMap",
   "variantName": "processReleaseResources",
   "elements": [
     {
