@@ -14,13 +14,13 @@ user pins a point on the map.
 Step one register here https://developer.huawei.com/consumer/en/ you need an account to start using Huawei mobile serives 
 on this app (PinYourAddressOnTheMap) we are going to use mapKit and location Kit
 
-### when you've registered please follow these steps to create you your first app on in AppGallery Connect
-https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#0
+#### 1. when you've registered please follow these steps to create you your first app on in AppGallery Connect
+link for the steps : https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#0
 
 Now open your application on android studio 
 
-### configure maven repository address for the HMS SDK open build.gradle on the project layer
-please see here from the PinYourAddressOnTheMap project
+#### 2. configure maven repository address for the HMS SDK open build.gradle on the project layer
+please see the build.gradle from the PinYourAddressOnTheMap project
 
 ```
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -52,6 +52,28 @@ task clean(type: Delete) {
 ```
 
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/build.gradle
+
+#### 3. now configure build.gradle on your app level by adding Compile Dependencies for the map,location and Okhhpt
+
+please see the build.gradle from the PinYourAddressOnTheMap project
+```
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation("com.google.code.gson:gson:2.8.5")
+
+    implementation 'com.huawei.agconnect:agconnect-core:1.2.1.301'
+    implementation 'com.huawei.hms:maps:4.0.1.301'
+    implementation 'com.huawei.hms:location:4.0.3.301'
+    implementation("com.squareup.okhttp3:okhttp:4.5.0")
+    
+}
+```
+link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/build.gradle
 
 
 ### please look at these examples also from Huawei
