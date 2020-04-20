@@ -11,7 +11,7 @@ user pins a point on the map.
 
 ### First you need to create an account on https://developer.huawei.com/consumer/en/ so you can use Huawei mobile services 
 
-Step one register here https://developer.huawei.com/consumer/en/ you need an account to start using Huawei mobile serives 
+Step one register here https://developer.huawei.com/consumer/en/
 on this app (PinYourAddressOnTheMap) we are going to use mapKit and location Kit
 
 #### 1. when you've registered please follow these steps to create you your first app on the AppGallery Connect
@@ -134,7 +134,7 @@ please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/maste
 ```
 see the code here : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/custom_info_wi.xml
 
-#### 7. now open MainActivity and import all required packages and declare all required variable and objects also read the comments they are very detailed
+#### 7. now open MainActivity and import all required packages and declare all required variables and objects also read the comments they are very detailed
 
 ```
 package com.sizwe.PinYourAddressOnTheMap;
@@ -548,6 +548,9 @@ public class myMapWorkLoad {
 ```
 #### 12. now add the icon that we use as a pin for the user current location and also add the popup message png life please see my drawable files
 link : https://github.com/Nxele/PinYourAddressOnTheMap/tree/master/app/src/main/res/drawable
+
+#### 13. now download the agconnect-services.json file put it on your app level layer to your project get your file from the app you created on the Huawei mobile services website select your app and go to develop tap you will see it there.
+please see link: https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/agconnect-services.json
 
 ### please look at these examples from Huawei.
 
