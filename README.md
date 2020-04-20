@@ -22,7 +22,7 @@ Now open your application on android studio
 ### configure maven repository address for the HMS SDK open build.gradle on the project layer
 please see here from the PinYourAddressOnTheMap project
 
-"""
+```
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
@@ -49,7 +49,7 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-"""
+```
 
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/build.gradle
 
