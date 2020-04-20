@@ -1,6 +1,6 @@
 ## PinYourAddressOnTheMap is a simple app to help getting started with Huawei Mobile Services
 
-#Application description
+# Application description
 
 When you open the app, the app locates user’s current location and shows
 Huawei map. Marks user’s current location on the map with Star and popup user’s
