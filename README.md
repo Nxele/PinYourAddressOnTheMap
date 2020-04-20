@@ -14,16 +14,19 @@ user pins a point on the map.
 Step one register here https://developer.huawei.com/consumer/en/ you need an account to start using Huawei mobile serives 
 on this app (PinYourAddressOnTheMap) we are going to use mapKit and location Kit
 
+### when you've registered please follow these step provide by Huawei so you can get familiar with the with the developer site
+https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#0
+
 ### please look at these examples also from Huawei
 
-### mapKit documentation
+#### mapKit documentation
 Doc: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/hms-map-
 v4-abouttheservice
-### Codelab to also help you get started with mapit
+#### Codelab to also help you get started with mapit
 Codelab: https://developer.huawei.com/consumer/en/codelab/HMSMapKit/index.html#0
 
-### location kit documentation
+#### location kit documentation
 Doc: https://developer.huawei.com/consumer/en/doc/development/HMS-Guides/location-
-### Codelab to also help you get started with location kit
+#### Codelab to also help you get started with location kit
 Codelab: https://developer.huawei.com/consumer/en/codelab/HMSLocationKit/index.html#0
 
