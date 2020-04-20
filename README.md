@@ -1,4 +1,4 @@
-## PinYourAddressOnTheMap is a simple app to help getting started with Huawei Mobile Services
+## PinYourAddressOnTheMap is a simple app to help you get started with Huawei Mobile Services
 
 ### Application description
 
@@ -14,12 +14,12 @@ user pins a point on the map.
 Step one register here https://developer.huawei.com/consumer/en/ you need an account to start using Huawei mobile serives 
 on this app (PinYourAddressOnTheMap) we are going to use mapKit and location Kit
 
-#### 1. when you've registered please follow these steps to create you your first app on in AppGallery Connect
+#### 1. when you've registered please follow these steps to create you your first app on the AppGallery Connect
 link for the steps : https://developer.huawei.com/consumer/en/codelab/HMSPreparation/index.html#0
 
 Now open your application on android studio 
 
-#### 2. configure maven repository address for the HMS SDK open build.gradle on the project layer
+#### 2. configure maven repository address for the HMS SDK open build.gradle on the project level layer
 please see the build.gradle from the PinYourAddressOnTheMap project
 
 ```
@@ -53,7 +53,7 @@ task clean(type: Delete) {
 
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/build.gradle
 
-#### 3. now configure build.gradle on your app level by adding Compile Dependencies for the map,location and Okhhpt
+#### 3. now configure build.gradle on your app level layer by adding Compile Dependencies for the map,location and Okhttp
 
 please see the build.gradle from the PinYourAddressOnTheMap project
 ```
@@ -101,7 +101,7 @@ link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/a
 ```
 please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/AndroidManifest.xml
 
-#### 6. create an xml under layout this xml will be used for the popup whe you select an marker on the map i've called mine custome_info_wi.xml
+#### 6. create an xml under layout this xml will be used for the popup when you click a marker on the map i've called mine custome_info_wi.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -132,7 +132,7 @@ please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/maste
     </LinearLayout>
 </LinearLayout>
 ```
-please see the code here : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/custom_info_wi.xml
+see the code here : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/custom_info_wi.xml
 
 #### 7. now open MainActivity and import all required packages and declare all required variable and objects also read the comments they are very detailed
 
@@ -307,7 +307,7 @@ code to mainActivity : https://github.com/Nxele/PinYourAddressOnTheMap/blob/mast
     }
 ```
 
-#### 9. now the map fragment is loaded , on load we add a draggable pin, setOnMapClickListener for moving the pin new selected location, setOnMarkerClickListener for displaying the markers current address on the pop up, add CustomInfoWindowAdapter for the popup and setOnMarkerDragListener for update camera view when you drag the pin also read the comments they are very detailed. 
+#### 9. now the map fragment is loaded , on load we add a draggable pin, setOnMapClickListener for moving the pin to thew selected location, setOnMarkerClickListener for displaying the markers current address on the popup when you click it, add CustomInfoWindowAdapter for the popup and setOnMarkerDragListener for update camera view when you drag the pin also read the comments they are very detailed. 
  
 ```
 //THIS IS THE MAP fragment METHOD ALL THE MAP INTERACTION HAPPENS HERE
@@ -394,7 +394,7 @@ private void updateMapCamera(LatLng latLng){
     }
 ```
 
-#### 11. now create a class myMapWorkLoad this class have two methods which i use on the mainActivity first method is getReverseGeocode this is a method that do a post request to Huawie API reverseGeocoder using Okhttp client this is the method that returns address when you click a pin on the map then i have wrapString this method replace commas with a nextline i use to contract a readable address and you can see on the popup
+#### 11. now create a class myMapWorkLoad this class have two methods which i use on the mainActivity first method is getReverseGeocode this is a method that do a post request to Huawie API reverseGeocoder using Okhttp client this is the method that returns address when you click a pin on the map then i have wrapString this method replace commas with a nextline i use it to construct a readable address ass you can see on the popup
 
 ```
 package com.sizwe.PinYourAddressOnTheMap;
@@ -546,6 +546,8 @@ public class myMapWorkLoad {
 
 }
 ```
+#### 12. now add the icon that we use as a pin for the user current location and also add the popup message png life please see my drawable files
+link : https://github.com/Nxele/PinYourAddressOnTheMap/tree/master/app/src/main/res/drawable
 
 ### please look at these examples from Huawei.
 
