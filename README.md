@@ -550,7 +550,7 @@ public class myMapWorkLoad {
 link : https://github.com/Nxele/PinYourAddressOnTheMap/tree/master/app/src/main/res/drawable
 
 #### 13. now download the agconnect-services.json file put it on your app level layer to your project get your file from the app you created on the Huawei mobile services website select your app and go to develop tap you will see it there.
-please see link: https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/agconnect-services.json
+please see my file and structure. link: https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/agconnect-services.json
 
 ### please look at these examples from Huawei.
 
