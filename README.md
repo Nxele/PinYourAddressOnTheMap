@@ -75,7 +75,7 @@ dependencies {
 ```
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/build.gradle
 
-### 4. Add a MapFragment in the layout file of an activity, and set the map attributes using the XML
+#### 4. Add a MapFragment in the layout file of an activity, and set the map attributes using the XML
 
 ```
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -90,7 +90,7 @@ link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/a
 ```
 link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/activity_main.xml
 
-### 5. add access permission on the AndroidManifest.xml 
+#### 5. add access permission on the AndroidManifest.xml 
 
 ```
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -101,7 +101,7 @@ link to the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/a
 ```
 please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/AndroidManifest.xml
 
-### 6. create an xml under layout this xml will be used for the popup whe you select an marker on the map i've called mine custome_info_wi.xml
+#### 6. create an xml under layout this xml will be used for the popup whe you select an marker on the map i've called mine custome_info_wi.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -134,7 +134,7 @@ please see the code : https://github.com/Nxele/PinYourAddressOnTheMap/blob/maste
 ```
 please see the code here : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/res/layout/custom_info_wi.xml
 
-### 7. now open MainActivity and import all required packages and declare all required variable and objects also read the comments they are very detailed
+#### 7. now open MainActivity and import all required packages and declare all required variable and objects also read the comments they are very detailed
 
 ```
 package com.sizwe.PinYourAddressOnTheMap;
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 ```
 code to mainActivity : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/java/com/sizwe/PinYourAddressOnTheMap/MainActivity.java
 
-### 8. now inside onCreate we request location access for the app, create location client and load the map layer, get user current location and display in on the map please read the comments they are very detailed
+#### 8. now inside onCreate we request location access for the app, create location client and load the map layer, get user current location and display in on the map please read the comments they are very detailed
 
 ```
  @Override
@@ -307,7 +307,7 @@ code to mainActivity : https://github.com/Nxele/PinYourAddressOnTheMap/blob/mast
     }
 ```
 
-### 9. now the map fragment is loaded , on load we add a draggable pin, setOnMapClickListener for moving the pin new selected location, setOnMarkerClickListener for displaying the markers current address on the pop up, add CustomInfoWindowAdapter for the popup and setOnMarkerDragListener for update camera view when you drag the pin also read the comments they are very detailed. 
+#### 9. now the map fragment is loaded , on load we add a draggable pin, setOnMapClickListener for moving the pin new selected location, setOnMarkerClickListener for displaying the markers current address on the pop up, add CustomInfoWindowAdapter for the popup and setOnMarkerDragListener for update camera view when you drag the pin also read the comments they are very detailed. 
  
 ```
 //THIS IS THE MAP fragment METHOD ALL THE MAP INTERACTION HAPPENS HERE
@@ -384,7 +384,7 @@ code to mainActivity : https://github.com/Nxele/PinYourAddressOnTheMap/blob/mast
     }
 ```
 
-### 10. use one method for updating the map camera you just call it and pass the new camera view latlng
+#### 10. use one method for updating the map camera you just call it and pass the new camera view latlng
 
 ```
 private void updateMapCamera(LatLng latLng){
@@ -394,7 +394,7 @@ private void updateMapCamera(LatLng latLng){
     }
 ```
 
-### 11. now create a class myMapWorkLoad this class have two methods which i use on the mainActivity first method is getReverseGeocode this is a method that do a post request to Huawie API reverseGeocoder using Okhttp client this is the method that returns address when you click a pin on the map then i have wrapString this method replace commas with a nextline i use to contract a readable address and you can see on the popup
+#### 11. now create a class myMapWorkLoad this class have two methods which i use on the mainActivity first method is getReverseGeocode this is a method that do a post request to Huawie API reverseGeocoder using Okhttp client this is the method that returns address when you click a pin on the map then i have wrapString this method replace commas with a nextline i use to contract a readable address and you can see on the popup
 
 ```
 package com.sizwe.PinYourAddressOnTheMap;
@@ -468,7 +468,7 @@ public class myMapWorkLoad {
 
 ```
 
-### 12. then we requestLocationUpdatesWithCallback this method keeps requesting new location or the user then we onRequestPermissionsResult
+#### 12. then we requestLocationUpdatesWithCallback this method keeps requesting new location or the user then we onRequestPermissionsResult
 
 ```
  // THIS FUNCTION LOCATE USER CURRENT LOCATION ALSO CHECK IF LOCATION ACCESS IS ENABLED ON THE DEVICE
