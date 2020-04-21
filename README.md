@@ -470,6 +470,7 @@ public class myMapWorkLoad {
 }
 
 ```
+see the code here : https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/src/main/java/com/sizwe/PinYourAddressOnTheMap/myMapWorkLoad.java
 
 #### 13. then we requestLocationUpdatesWithCallback this method keeps requesting new location or the user then we onRequestPermissionsResult
 
@@ -551,9 +552,6 @@ public class myMapWorkLoad {
 ```
 #### 14. now add the icon that we use as a pin for the user current location and also add the popup message png life please see my drawable files
 link : https://github.com/Nxele/PinYourAddressOnTheMap/tree/master/app/src/main/res/drawable
-
-#### 15. now download the agconnect-services.json file put it on your app level layer to your project get your file from the app you created on the Huawei mobile services website select your app and go to develop tap you will see it there.
-please see my file and structure. link: https://github.com/Nxele/PinYourAddressOnTheMap/blob/master/app/agconnect-services.json
 
 ### please look at these examples from Huawei.
 
